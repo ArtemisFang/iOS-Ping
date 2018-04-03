@@ -13,6 +13,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        PlainPing.ping("www.baidu.com", withTimeout: 1.0, completionBlock: { (timeElapsed:Double?, error:Error?) in
+            if let latency = timeElapsed {
+                print("latency (ms): \(latency)")
+            }
+            if let error = error {
+                print("error: \(error.localizedDescription)")
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
